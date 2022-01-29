@@ -1,0 +1,1 @@
+web: gunicorn crosiance.wsgi --log-file -
