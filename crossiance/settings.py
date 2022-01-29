@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
+import os,psycopg2
 
 from pathlib import Path
 
@@ -83,10 +83,13 @@ DATABASES = {
          'USER': 'postgres',
          'PASSWORD': '1234',
          'HOST': 'localhost',
-         'PORT': '5432',
+         'PORT': '',
      }
  }
+import dj_database_url
 
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
